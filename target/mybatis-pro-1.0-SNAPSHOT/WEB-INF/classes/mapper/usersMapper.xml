@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    mapper 用于定义一个映射配置文件的根节点
+    namespace 属性是用来配置命名空间，主要进行session级别的缓存管理
+    命名空间默认情况下使用当前我们操作的实体类的全路径
+-->
+<mapper namespace="cn.huang.entity.Users">
+    <select id="findUser" resultType="cn.huang.entity.Users">
+        select * from users
+        /*动态语句的添加*/
+        <if test="id != null">
+            where id = #{id}
+        </if>
+    </select>
+
+    <!--   当出现多个条件的时候，就会要写多个sql语句，这样的代码是不简洁的，这时候可以使用mybatis的动态sql语句
+        <select id="findById" resultType="cn.huang.entity.Users">
+            select * from users where id = #{id}
+        </select>-->
+</mapper>
