@@ -1,7 +1,7 @@
 <%--
    Author: Yaking
    Date: 2019/6/10 20:40
-   Describe: 
+   Describe:  这个显示后台数据库的所有用户信息
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
