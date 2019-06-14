@@ -78,4 +78,15 @@ public class UsersDAO {
         }
         return user;
     }
+    public void  delUsers(Integer id) {
+        try {
+            getSession().delete("delUser", id);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqlSession.rollback();
+        } finally {
+            sqlSession.close();
+        }
+    }
 }

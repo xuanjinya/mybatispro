@@ -26,7 +26,8 @@
             <h1>MyBatis 基础入门！</h1>
             <p>通过一个项目来完成基础部分的学习！</p>
             <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more!</a></p>
-            <p><a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/addusers.jsp" role="button">add new user!</a></p>
+            <p><a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/addusers.jsp" role="button">add
+                new user!</a></p>
         </div>
     </div>
     <div class="row">
@@ -45,12 +46,12 @@
             <c:forEach var="user" items="${usersList}">
                 <tr>
                     <td>${user.id}</td>
-                    <%--<td>${user.username}</td>--%>
+                        <%--<td>${user.username}</td>--%>
                     <td>${user.name}</td>
                     <td>${user.nickname}</td>
                     <td>${user.email}</td>
                     <td>${user.phone}</td>
-                    <td><fmt:formatDate value="${user.updateTime}" pattern="yyyy-MM-dd"></fmt:formatDate> </td>
+                    <td><fmt:formatDate value="${user.updateTime}" pattern="yyyy-MM-dd"></fmt:formatDate></td>
                     <c:if test="${user.userStatus==0}">
                         <td>正常</td>
                     </c:if>
@@ -62,8 +63,13 @@
                     </c:if>
                     <td>
                         <a href="${pageContext.request.contextPath}/detail?id=${user.id}">查看</a>
-                        <a href="">修改</a>
-                        <a href="">删除</a>
+                        <c:if test="${user.userStatus == 0}">
+                            <a href="${pageContext.request.contextPath}/deluser?id=${user.id}&type=lock">锁定</a>
+                        </c:if>
+                        <c:if test="${user.userStatus == 1}">
+                            <a href="${pageContext.request.contextPath}/deluser?id=${user.id}&type=unlock">解锁</a>
+                        </c:if>
+                        <a href="${pageContext.request.contextPath}/deluser?id=${user.id}&type=del">删除</a>
                     </td>
                 </tr>
             </c:forEach>

@@ -59,4 +59,7 @@
         </set>
         where id = #{id}
     </update>
+   <delete id="delUser">
+      delete from users where id = #{id}
+    </delete>
 </mapper>
