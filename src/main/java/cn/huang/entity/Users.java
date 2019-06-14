@@ -35,7 +35,7 @@ public class Users {
     public Users() {
     }
 
-    public Users(Integer id, String username, String userpass, String nickname, Integer age, String gender, String phone, String email, Date createTime, Date updateTime, Date lastLogin, Integer userStatus, String remark) {
+    public Users(Integer id, String name, String userpass, String nickname, Integer age, String gender, String phone, String email, Date createTime, Date updateTime, Date lastLogin, Integer userStatus, String remark) {
         this.id = id;
 //        this.username = username;
         this.name = name;
@@ -50,6 +50,20 @@ public class Users {
         this.lastLogin = lastLogin;
         this.userStatus = userStatus;
         this.remark = remark;
+    }
+
+    public Users(String name, String userpass, String nickname, Integer age, String gender, String email, String phone, Date createTime, Date updateTime, Date lastLogin, Integer userStatus) {
+        this.name = name;
+        this.userpass = userpass;
+        this.nickname = nickname;
+        this.age = age;
+        this.gender = gender;
+        this.phone = phone;
+        this.email = email;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+        this.lastLogin = lastLogin;
+        this.userStatus = userStatus;
     }
 
     public Users(Integer id) {

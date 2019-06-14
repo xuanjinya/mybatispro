@@ -16,7 +16,7 @@ public class UsersDAO {
     private List<Users> list;
     private Users user;
 
-    private SqlSession getSqlSession() {
+    private SqlSession getSession() {
         //4.通过factory打开会话：sqlsession
         sqlSession = SqlSessionFactoryUtils.getSqlSessionFactory().openSession();
         return sqlSession;
@@ -25,7 +25,7 @@ public class UsersDAO {
     //查询数据的方法
     public List<Users> findAll() {
         try {
-            list = getSqlSession().selectList("findUser");
+            list = getSession().selectList("findUser");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -37,7 +37,7 @@ public class UsersDAO {
     //查询单个用户，根据ID
     public Users findById(Integer id) {
         try {
-            user = getSqlSession().selectOne("findUser", new Users(id));
+            user = getSession().selectOne("findUser", new Users(id));
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -46,4 +46,20 @@ public class UsersDAO {
         return user;
     }
 
+    /*
+    * 添加一个用户到数据库
+    * */
+    public Users addUser(Users user) {
+        try {
+            //返回值：是insert执行过程中影响的行数
+            getSession().insert("adduser",user);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqlSession.rollback();
+        } finally {
+            sqlSession.close();
+        }
+        return user;
+    }
 }

@@ -9,7 +9,7 @@
 -->
 <mapper namespace="cn.huang.entity.Users">
     <!--常规的情况下，我们的cn.huang.entity.Users和数据中的表是形成对应的关系的，就是User的属性和数据库中的属性名称是保持一致性的-->
-<!--    <select id="findUser" resultType="cn.huang.entity.Users">-->
+    <!--    <select id="findUser" resultType="cn.huang.entity.Users">-->
     <select id="findUser" resultMap="forUsers">
         select * from users
         /*动态语句的添加*/
@@ -31,4 +31,10 @@
         <select id="findById" resultType="cn.huang.entity.Users">
             select * from users where id = #{id}
         </select>-->
+
+    <!--添加数据到数据库-->
+    <insert id="adduser"  useGeneratedKeys="true" keyProperty="id" parameterType="cn.huang.entity.Users">
+        insert into users (username,userpass,nickname,age,gender,email,phone,createTime,updateTime,lastLogin,userStatus,remark)
+         values (#{name},#{userpass},#{nickname},#{age},#{gender},#{email},#{phone},#{createTime},#{updateTime},#{lastLogin},#{userStatus},#{remark})
+    </insert>
 </mapper>

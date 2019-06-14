@@ -25,7 +25,8 @@
         <div class="jumbotron">
             <h1>MyBatis 基础入门！</h1>
             <p>通过一个项目来完成基础部分的学习！</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more!</a></p>
+            <p><a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/addusers.jsp" role="button">add new user!</a></p>
         </div>
     </div>
     <div class="row">
