@@ -33,8 +33,12 @@
         </select>-->
 
     <!--添加数据到数据库-->
-    <insert id="adduser"  useGeneratedKeys="true" keyProperty="id" parameterType="cn.huang.entity.Users">
-        insert into users (username,userpass,nickname,age,gender,email,phone,createTime,updateTime,lastLogin,userStatus,remark)
-         values (#{name},#{userpass},#{nickname},#{age},#{gender},#{email},#{phone},#{createTime},#{updateTime},#{lastLogin},#{userStatus},#{remark})
+    <sql id="user_fields">
+        username,userpass,nickname,age,gender,email,phone,createTime,updateTime,lastLogin,userStatus,remark
+    </sql>
+    <insert id="adduser" useGeneratedKeys="true" keyProperty="id" parameterType="cn.huang.entity.Users">
+        insert into users (<include refid="user_fields"></include>)
+        values
+        (#{name},#{userpass},#{nickname},#{age},#{gender},#{email},#{phone},#{createTime},#{updateTime},#{lastLogin},#{userStatus},#{remark})
     </insert>
 </mapper>
