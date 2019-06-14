@@ -31,7 +31,8 @@
     <c:set var="user" value="${user}"></c:set>
     <div class="row">
         <div class="col-md col-md-offset-2">
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="${pageContext.request.contextPath}/updateusers">
+                <input type="hidden" name="id" value="${user.id}">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">用户账号</label>
                     <div class="col-sm-10">
@@ -124,6 +125,9 @@
                         <input type="text" class="form-control" id="remark" value="${user.remark}" name="remark"
                                placeholder="Password">
                     </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="提交数据更新" class="btn btn-primary">
                 </div>
             </form>
         </div>

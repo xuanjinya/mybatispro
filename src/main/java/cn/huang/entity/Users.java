@@ -66,6 +66,17 @@ public class Users {
         this.userStatus = userStatus;
     }
 
+    public Users(Integer id, String nickname, Integer age, String gender, String phone, String email, Date updateTime, String remark) {
+        this.id = id;
+        this.nickname = nickname;
+        this.age = age;
+        this.gender = gender;
+        this.phone = phone;
+        this.email = email;
+        this.updateTime = updateTime;
+        this.remark = remark;
+    }
+
     public Users(Integer id) {
         this.id = id;
     }

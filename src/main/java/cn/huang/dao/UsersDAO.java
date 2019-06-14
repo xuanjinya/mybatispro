@@ -47,12 +47,28 @@ public class UsersDAO {
     }
 
     /*
-    * 添加一个用户到数据库
-    * */
+     * 添加一个用户到数据库
+     * */
     public Users addUser(Users user) {
         try {
             //返回值：是insert执行过程中影响的行数
-            getSession().insert("adduser",user);
+            getSession().insert("adduser", user);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqlSession.rollback();
+        } finally {
+            sqlSession.close();
+        }
+        return user;
+    }
+
+    /*
+     * 修改用户资料
+     * */
+    public Users updateUsers(Users user) {
+        try {
+            getSession().update("updateUser", user);
             sqlSession.commit();
         } catch (Exception e) {
             e.printStackTrace();
