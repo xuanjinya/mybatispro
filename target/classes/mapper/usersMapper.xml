@@ -20,13 +20,23 @@
     <!--当出现不一致的情况，就不能查询到相关的数据，这时候可以使用resultMap(自定义映射关系)来进行配置了-->
     <!--自定义映射关系 集合：主要包含对于一些自定义操作的配置，如不一致的属性和字段-->
     <resultMap id="forUsers" type="cn.huang.entity.Users">
+        <!--绑定id主键-->
+        <id property="id" column="id"></id>
+
         <!--主键不一致的时候可以使用这个配置
         <id column="" property=""></id>-->
         <!--如：数据库中的username,实体类User的name
                 column:数据库中的属性名  property：实体类中的属性名称
         -->
         <result column="username" property="name"></result>
+        <collection property="addresses" column="id" ofType="cn.huang.entity.Address" select="getAddress">
+
+        </collection>
     </resultMap>
+
+    <select id="getAddress" resultType="cn.huang.entity.Address">
+        select * from address where userid = #{id}
+    </select>
     <!--   当出现多个条件的时候，就会要写多个sql语句，这样的代码是不简洁的，这时候可以使用mybatis的动态sql语句
         <select id="findById" resultType="cn.huang.entity.Users">
             select * from users where id = #{id}

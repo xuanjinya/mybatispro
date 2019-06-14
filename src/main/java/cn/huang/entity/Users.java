@@ -1,6 +1,7 @@
 package cn.huang.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: Yaking
@@ -31,6 +32,7 @@ public class Users {
     private Date lastLogin; //用户的最后登陆时间
     private Integer userStatus; //用户的账号状态，0：正常 1：锁定 2：删除
     private String remark; //用户的备注信息
+    private List<Address> addresses;
 
     public Users() {
     }
@@ -64,6 +66,7 @@ public class Users {
         this.updateTime = updateTime;
         this.lastLogin = lastLogin;
         this.userStatus = userStatus;
+
     }
 
     public Users(Integer id, String nickname, Integer age, String gender, String phone, String email, Date updateTime, String remark) {
@@ -193,4 +196,31 @@ public class Users {
         this.remark = remark;
     }
 
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", userpass='" + userpass + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", lastLogin=" + lastLogin +
+                ", userStatus=" + userStatus +
+                ", remark='" + remark + '\'' +
+                ", addresses=" + addresses +
+                '}';
+    }
 }

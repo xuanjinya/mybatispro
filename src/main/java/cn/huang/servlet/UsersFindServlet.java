@@ -29,9 +29,11 @@ public class UsersFindServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Users> list = usersDAO.findAll();
+        System.out.println(list);
         for (Users users : list) {
             System.out.println(users);
         }
+
         req.setAttribute("usersList", list);
         req.getRequestDispatcher("index.jsp").forward(req, resp);
     }

@@ -37,7 +37,7 @@
                     <label class="col-sm-2 control-label">用户账号</label>
                     <div class="col-sm-10">
                         <%--<p class="form-control-static">${user.username}</p>--%>
-                            <p class="form-control-static">${user.name}</p>
+                        <p class="form-control-static">${user.name}</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -131,6 +131,37 @@
                 </div>
             </form>
         </div>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <tr>
+                <th>地址编号</th>
+                <th>国家</th>
+                <th>省</th>
+                <th>市</th>
+                <th>县</th>
+                <th>街道</th>
+                <th>详情地址</th>
+                <th>是否默认</th>
+            </tr>
+            <c:forEach var="addr" items="${user.addresses}">
+                <tr>
+                    <td>${addr.id}</td>
+                    <td>${addr.nation}</td>
+                    <td>${addr.province}</td>
+                    <td>${addr.city}</td>
+                    <td>${addr.country}</td>
+                    <td>${addr.street}</td>
+                    <td>${addr.remark}</td>
+                    <c:if test="${addr.defaultAddr == true}">
+                        <td>默认地址</td>
+                    </c:if>
+                    <c:if test="${addr.defaultAddr == false}">
+                        <td>-------</td>
+                    </c:if>
+                </tr>
+            </c:forEach>
+        </table>
     </div>
 </div>
 </body>

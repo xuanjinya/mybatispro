@@ -38,6 +38,7 @@ public class UsersFindByIdServlet extends HttpServlet {
         log.info("获取到查询参数ID："+id);
         Users user = usersDAO.findById(Integer.parseInt(id));
         log.info("查询完成，查询的数据为："+user);
+        System.out.println(user.toString());
         req.setAttribute("user", user);
         req.getRequestDispatcher("detail.jsp").forward(req, resp);
     }
